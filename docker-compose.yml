@@ -1,0 +1,16 @@
+version: "2"
+services:
+  app:
+    build: .
+    command: pm2-runtime process.json
+    volumes:
+      - .:/usr/api
+      - /usr/app/node_modules
+    ports:
+      - "3033:3033"
+    container_name: app
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge
